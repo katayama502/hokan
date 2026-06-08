@@ -1,5 +1,4 @@
 import { createServerClient } from '@supabase/ssr';
-import { createClient } from '@supabase/supabase-js';
 import { cookies } from 'next/headers';
 
 export function createSupabaseServerClient() {
@@ -22,20 +21,6 @@ export function createSupabaseServerClient() {
             // Server Component では set は無効（読み取り専用）
           }
         },
-      },
-    }
-  );
-}
-
-// サービスロールクライアント（管理者操作用・サーバーサイドのみ）
-export function createSupabaseAdminClient() {
-  return createClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.SUPABASE_SERVICE_ROLE_KEY!,
-    {
-      auth: {
-        autoRefreshToken: false,
-        persistSession: false,
       },
     }
   );
