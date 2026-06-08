@@ -207,7 +207,7 @@ export default async function CustomerDetailPage({
                         <div>
                           <div className="flex items-center gap-2">
                             <span className="font-medium">
-                              {INSURANCE_TYPE_LABELS[contract.insurance_type] ?? contract.insurance_type}
+                              {INSURANCE_TYPE_LABELS[contract.insurance_type as keyof typeof INSURANCE_TYPE_LABELS] ?? contract.insurance_type}
                             </span>
                             <span className="text-gray-400">/</span>
                             <span>{contract.insurance_company}</span>
@@ -215,7 +215,7 @@ export default async function CustomerDetailPage({
                               variant={contract.status === 'active' ? 'success' : 'secondary'}
                               className="text-xs"
                             >
-                              {CONTRACT_STATUS_LABELS[contract.status]}
+                              {CONTRACT_STATUS_LABELS[contract.status as keyof typeof CONTRACT_STATUS_LABELS]}
                             </Badge>
                           </div>
                           <p className="text-sm text-gray-500 mt-1">
